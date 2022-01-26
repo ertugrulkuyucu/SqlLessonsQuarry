@@ -1,3 +1,63 @@
+
+
+
+--Create database KuzeyRuzgari
+--go
+--use KuzeyRuzgari
+--go
+--Create table Personeller
+--(
+--PersonelID int primary key identity(1,1) not null,
+--PersonelAdi nvarchar(50) not null,
+--PersonelSoyadi nvarchar(50) not null
+--)
+
+--Create table Musteriler
+--(
+--MusteriID int identity(1,1) primary key not null,
+--SirketAdi nvarchar(30) not null,
+--Telefonu nvarchar(24) not null
+--)
+--go
+--Create table Siparisler
+--(
+--SiparisID int identity(1,1) primary key not null,
+--SiparisTarihi date not null,
+--SiparisiVerenMusteriID int foreign key references Musteriler(MusteriID) not null,
+--SiparisiAlanPersonelID int foreign key references Personeller(PersonelID) not null
+--)
+
+--Kodla unique ve check consraint nasil olusturulur
+--Plaka kolonu unique; YapimYili check constraint [10 yasindan buyuk araclar kayit elilemez!]
+
+--create table Araclar
+--(
+--	AracID int primary key identity (1,1) not null,
+--	Marka nvarchar(40) not null,
+--	Plaka nvarchar(10) not null,
+--	YapimYili datetime not null,
+--	constraint Yapimyili check (datediff(YEAR, YapimYili, getdate())<10),
+--	unique (Plaka)
+--)
+
+--insert into Araclar values ('Mercedes', '42 ZA 3512', '01.01.2014')
+
+--select * from Araclar
+
+
+--alter table Araclar
+--alter column Marka nvarchar(50) not null
+
+
+--Alter table Araclar
+
+alter table Araclar
+add MotorGucu int null
+
+
+alter table Araclar
+drop column MotorGucu 
+
 select ShipperID, CompanyName from Shippers
 select * from Shippers
 
