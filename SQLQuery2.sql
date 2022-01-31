@@ -147,3 +147,70 @@ Select ProductName, UnitPrice, UnitsInStock from Products where UnitsInStock > 5
 
 
 
+
+
+Select ProductName, UnitPrice, UnitsInStock from Products where UnitsInStock > 50 order by 
+
+
+
+
+--en fazla kargo ücreti odenen siparis id sini ve odenen miktarýný gösteriniz
+select top 1 OrderID, Freight from Orders order by Freight desc 
+
+
+
+--en son teslim edilen 5 siparisin detaylarini gosteriniz
+select top 5 * from Orders order by ShippedDate desc
+
+
+
+
+--ürünler tablosunda tum elemanlar ürün fiyatý ucuzdan pahalýya stok miktari coktan aza gelecek sekilde sýralayýn
+select * from Products order by UnitPrice asc , UnitsInStock desc
+
+
+--calýsanlar listesi employee tablosundan hangi ülke calýsanlarý oldugunu gosteren listeyi yapýnýz
+select distinct Country from employees 
+
+--Umut un yontem
+select Country from employees group by Country
+
+
+--bas harfi c olan stoklarda mevcut 10 ve 250 dolar arasý ücreti olan urunleri fiyatlara göre listeleyiniz
+select * from Products where like 'c%' group by UnitPrice asc
+
+
+--carsamba gunu alýnan kargo ucreti 20 ila 75 arasý olan teslim tarihi null olmayan siparislerin bilgilerini raporlayýnýz ve order order ýd sine göre buyukten kucuge sýralayýnýz,
+
+select * from Orders  where ShippedDate = 'wednesday',
+
+
+--a harfi ile baslayan musteri
+select CompanyName from Customers where LEFT (CompanyName,1) = 'a'
+
+
+--a ile biten musteri
+select CompanyName from Customers where RIGHT (CompanyName,1) = 'a'
+
+
+--musterilerin icinde ltd gecen 
+select CompanyName from Customers where CompanyName Like '%ltd%'
+
+
+--ilk iki harfi bilinmeyen son uc harfi mon olanlarý listele
+select CompanyName from Customers where CompanyName Like '%mon'
+
+
+--ilk harfi a yada s olanlari listele
+select CompanyName from Customers where CompanyName like '[as]%'
+
+ 
+--ilk harfi a ile k arasýnda olan
+select CustomerID from Customers where CustomerID like '[a-k]%'
+
+
+--custome ýd lerin ilk harfi a ikinci harfi n olmayan musteriler
+select CustomerID from Customers where CustomerID like 'a[^n]%'
+
+
+
