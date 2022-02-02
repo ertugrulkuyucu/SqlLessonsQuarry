@@ -1,2 +1,2 @@
 # SqlLessonsQuarry
-//SQL notes
+//SQL  Notes
