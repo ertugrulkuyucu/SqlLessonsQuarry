@@ -95,10 +95,10 @@ select OrderId, OrderDate, ShippedDate from Orders where ShippedDate is null
 
 select OrderId, OrderDate, ShippedDate from Orders where ShippedDate is not null
 
---Bölge bilgisi(region) olmayan musterileri(Customers) raporlayiniz...
+--BÃ¶lge bilgisi(region) olmayan musterileri(Customers) raporlayiniz...
 select CompanyName, Region from Customers where Region is null
 
---Kimseye rapor(Reportsto) vermeyen personelimin adı soyadı ve ünvanı(title) nedir?
+--Kimseye rapor(Reportsto) vermeyen personelimin adÃ½ soyadÃ½ ve Ã¼nvanÃ½(title) nedir?
 select FirstName, LastName, Title, ReportsTo from Employees where ReportsTo is null
 
 select OrderId, OrderDate, ShippedDate from Orders where ShippedDate is null
@@ -111,35 +111,35 @@ select CustomerID, EmployeeID, ShipVia, ShipRegion from Orders where (CustomerID
 
 select Productname from Products where UnitsInStock > 0 and UnitPrice < 10 
 
--- sadece 3,5,7,4,12,8 idelerini içermeyenler gelsin
+-- sadece 3,5,7,4,12,8 idelerini iÃ§ermeyenler gelsin
 select * from [Order Details] where ProductID not in(3,5,7,4,12,8)
 
 
---üçüncü karakteri  a,b,c den bir tanesi olan ürün isimlerini listeler.
+--Ã¼Ã§Ã¼ncÃ¼ karakteri  a,b,c den bir tanesi olan Ã¼rÃ¼n isimlerini listeler.
 
 
-------SIRALAMA İŞLEMLERİ (ORDER BY)
---Sorgunuz içerisinden gelen sonuçları belirli bir hiyerarşik sıralamaya göre raporlamaniz gerekebilir.
---Bu sıralama işlemi için kullanılan anahtar kelime "order by" anahtar kelimesidir...
---Büyükten küçüğe sıralama (Z-A) => DESC (Descending)
---Küçükten büyüğe sıralama (A-Z) => ASC (Ascending)
+------SIRALAMA ÃÃLEMLERÃ (ORDER BY)
+--Sorgunuz iÃ§erisinden gelen sonuÃ§larÃ½ belirli bir hiyerarÃ¾ik sÃ½ralamaya gÃ¶re raporlamaniz gerekebilir.
+--Bu sÃ½ralama iÃ¾lemi iÃ§in kullanÃ½lan anahtar kelime "order by" anahtar kelimesidir...
+--BÃ¼yÃ¼kten kÃ¼Ã§Ã¼Ã°e sÃ½ralama (Z-A) => DESC (Descending)
+--KÃ¼Ã§Ã¼kten bÃ¼yÃ¼Ã°e sÃ½ralama (A-Z) => ASC (Ascending)
 
---Varsayılan sıralama yöntemi küçükten büyüğe sıralama yöntemidir.
---Dolayısıyla sorguya asc yazmasanız bile sorgunuz sıralı bir şekilde gelecektir.
+--VarsayÃ½lan sÃ½ralama yÃ¶ntemi kÃ¼Ã§Ã¼kten bÃ¼yÃ¼Ã°e sÃ½ralama yÃ¶ntemidir.
+--DolayÃ½sÃ½yla sorguya asc yazmasanÃ½z bile sorgunuz sÃ½ralÃ½ bir Ã¾ekilde gelecektir.
 
---Personellerimizi A-Z'ye sıralayalım...
+--Personellerimizi A-Z'ye sÃ½ralayalÃ½m...
 Select EmployeeID,Firstname + ' ' + LastName as 'AdSoyad' from Employees order by AdSoyad asc
 
---Personellerimizi Z-A'ye sıralayalım
+--Personellerimizi Z-A'ye sÃ½ralayalÃ½m
 Select EmployeeID,Firstname + ' ' + LastName as 'AdSoyad' from Employees order by AdSoyad desc
 
 --Musterilerin ID'lerini (CustomerID), sirket adlarini (CompanyName), ulkelerini (Country) listeleyiniz.
 --Ancak sirket Fransiz sirketi olacak ve CustomerID'lerine gore tersten siralanacak...
 Select CustomerID, CompanyName, Country from Customers where Country ='France' order by CustomerID desc
 
---Ürünlerimizin adları ProductName Ücretleri UnitPrice stok miktarları UnitInStock bu 3 sütunu gösteriniz
---Stok miktarı 50'den büyük olacak ve ürün ücretine göre ucuzdan pahalıya göre bir sıralama gerçekleşecek
---İlk harfi p olan ürünler
+--ÃœrÃ¼nlerimizin adlarÃ½ ProductName Ãœcretleri UnitPrice stok miktarlarÃ½ UnitInStock bu 3 sÃ¼tunu gÃ¶steriniz
+--Stok miktarÃ½ 50'den bÃ¼yÃ¼k olacak ve Ã¼rÃ¼n Ã¼cretine gÃ¶re ucuzdan pahalÃ½ya gÃ¶re bir sÃ½ralama gerÃ§ekleÃ¾ecek
+--Ãlk harfi p olan Ã¼rÃ¼nler
 
 
 
@@ -154,7 +154,7 @@ Select ProductName, UnitPrice, UnitsInStock from Products where UnitsInStock > 5
 
 
 
---en fazla kargo ücreti odenen siparis id sini ve odenen miktarını gösteriniz
+--en fazla kargo Ã¼creti odenen siparis id sini ve odenen miktarÃ½nÃ½ gÃ¶steriniz
 select top 1 OrderID, Freight from Orders order by Freight desc 
 
 
@@ -165,22 +165,22 @@ select top 5 * from Orders order by ShippedDate desc
 
 
 
---ürünler tablosunda tum elemanlar ürün fiyatı ucuzdan pahalıya stok miktari coktan aza gelecek sekilde sıralayın
+--Ã¼rÃ¼nler tablosunda tum elemanlar Ã¼rÃ¼n fiyatÃ½ ucuzdan pahalÃ½ya stok miktari coktan aza gelecek sekilde sÃ½ralayÃ½n
 select * from Products order by UnitPrice asc , UnitsInStock desc
 
 
---calısanlar listesi employee tablosundan hangi ülke calısanları oldugunu gosteren listeyi yapınız
+--calÃ½sanlar listesi employee tablosundan hangi Ã¼lke calÃ½sanlarÃ½ oldugunu gosteren listeyi yapÃ½nÃ½z
 select distinct Country from employees 
 
 --Umut un yontem
 select Country from employees group by Country
 
 
---bas harfi c olan stoklarda mevcut 10 ve 250 dolar arası ücreti olan urunleri fiyatlara göre listeleyiniz
+--bas harfi c olan stoklarda mevcut 10 ve 250 dolar arasÃ½ Ã¼creti olan urunleri fiyatlara gÃ¶re listeleyiniz
 select * from Products where like 'c%' group by UnitPrice asc
 
 
---carsamba gunu alınan kargo ucreti 20 ila 75 arası olan teslim tarihi null olmayan siparislerin bilgilerini raporlayınız ve order order ıd sine göre buyukten kucuge sıralayınız,
+--carsamba gunu alÃ½nan kargo ucreti 20 ila 75 arasÃ½ olan teslim tarihi null olmayan siparislerin bilgilerini raporlayÃ½nÃ½z ve order order Ã½d sine gÃ¶re buyukten kucuge sÃ½ralayÃ½nÃ½z,
 
 select * from Orders  where ShippedDate = 'wednesday',
 
@@ -197,7 +197,7 @@ select CompanyName from Customers where RIGHT (CompanyName,1) = 'a'
 select CompanyName from Customers where CompanyName Like '%ltd%'
 
 
---ilk iki harfi bilinmeyen son uc harfi mon olanları listele
+--ilk iki harfi bilinmeyen son uc harfi mon olanlarÃ½ listele
 select CompanyName from Customers where CompanyName Like '%mon'
 
 
@@ -205,12 +205,62 @@ select CompanyName from Customers where CompanyName Like '%mon'
 select CompanyName from Customers where CompanyName like '[as]%'
 
  
---ilk harfi a ile k arasında olan
+--ilk harfi a ile k arasÃ½nda olan
 select CustomerID from Customers where CustomerID like '[a-k]%'
 
 
---custome ıd lerin ilk harfi a ikinci harfi n olmayan musteriler
+--custome Ã½d lerin ilk harfi a ikinci harfi n olmayan musteriler
 select CustomerID from Customers where CustomerID like 'a[^n]%'
+
+--Ã¼lkesi ingiltere olmayÄ±p adÄ± a ile baslayÄ±p soy adÄ± l ile biten 1985 Ã¶ncesi dogumlularÄ±n oncesinin listesi
+select * from Employees where Country not like 'england' and Left (FirstName,1) = 'a' and RIGHT (LastName,1) = 'r' 
+and BirthDate < '1985'
+
+
+
+--------------------------------AGGREGATE FUNCTIONS--------------------------------------------
+--COUNT YAPISI
+
+--Stokta bulunan kaÃ§ tane urunumuz vardÄ±r?
+select COUNT(ProductID) from Products
+where UnitsInStock >0
+
+
+--1996 yÄ±lÄ±ndan sonra alÄ±nmÄ±ÅŸ kaÃ§ adet sipariÅŸ vardÄ±r?
+select COUNT(OrderDate) from Orders
+where YEAR(OrderDate)>1996
+
+
+--Kac ulkeden mÃ¼ÅŸterimiz bulunmaktadÄ±r?
+select COUNT(distinct Country) from Customers
+--T-SQL'in anahtar kelimerinden biri olan distinct; sayilan kolon icerisindeki tekrar eden kayitlarin es gecilmesini saÄŸlar..
+
+
+select EmployeeID,FirstName,LastName,Country from Employees where YEAR(BirthDate)<1990
+and Country !='USA'
+and Hiredate between 10 and 80
+
+
+--fransada Ã§alÄ±ÅŸmak Ã¼zere olan kadÄ±n mÃ¼ÅŸteri portfÃ¶yÃ¼nÃ¼ geliÅŸtirmek Ã¼zere psikoloji eÄŸitimi almÄ±ÅŸ iletiÅŸim yÃ¶nÃ¼ kuvvetli 1965 yÄ±lÄ±ndan once doÄŸmuÅŸ personel 
+
+
+select FirstName,LastName from Employees where Notes like '%psychology%' and  YEAR(BirthDate)<1965 
+--SUM YAPISI
+-- FONKSÄ°YONA PARAMETRE OLARAK GONDERILEN KOLON Ä°CERÄ°GÄ°NDEKÄ° TÃœM DEÄERLERÄ° TOPLAYIP SÄ°ZE GERÄ° DÃ–NDÃœRÃœR
+--TOPLAYIP SÄ°ZE GERÄ° DÃ–NDÃœRÃœR..
+
+
+--Her bir Ã¼rÃ¼nden bir adet alsam ne kadar Ã¶derim
+select SUM(UnitPrice) from Products
+
+
+--Depoda Ucret BazlÄ± olarak toplam nekdarlÄ±k urunum kalmÄ±stÄ±r?
+select SUM(UnitPrice*UnitsInStock) from Products
+
+
+--1997 yÄ±lÄ±nda alÄ±nmÄ±ÅŸ olan siparislerim icin toplam ne kadarlÄ±k kargo odemesi yaptÄ±k?
+select SUM(Freight) from Orders
+where YEAR(OrderDate)=1997
 
 
 
