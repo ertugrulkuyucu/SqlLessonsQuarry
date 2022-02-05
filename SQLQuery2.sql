@@ -142,11 +142,7 @@ Select CustomerID, CompanyName, Country from Customers where Country ='France' o
 --Ýlk harfi p olan ürünler
 
 
-
 Select ProductName, UnitPrice, UnitsInStock from Products where UnitsInStock > 50 order by 
-
-
-
 
 
 Select ProductName, UnitPrice, UnitsInStock from Products where UnitsInStock > 50 order by 
@@ -235,11 +231,9 @@ where YEAR(OrderDate)>1996
 select COUNT(distinct Country) from Customers
 --T-SQL'in anahtar kelimerinden biri olan distinct; sayilan kolon icerisindeki tekrar eden kayitlarin es gecilmesini sağlar..
 
-
 select EmployeeID,FirstName,LastName,Country from Employees where YEAR(BirthDate)<1990
 and Country !='USA'
 and Hiredate between 10 and 80
-
 
 --fransada çalışmak üzere olan kadın müşteri portföyünü geliştirmek üzere psikoloji eğitimi almış iletişim yönü kuvvetli 1965 yılından once doğmuş personel 
 
