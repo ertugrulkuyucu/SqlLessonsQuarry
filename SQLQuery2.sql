@@ -256,5 +256,47 @@ select SUM(UnitPrice*UnitsInStock) from Products
 select SUM(Freight) from Orders
 where YEAR(OrderDate)=1997
 
+--Bu zaman dek odenmis ortalama kargo ücretimiz nedir (SUM- COUNT)
+Select SUM(Freight) / COUNT(OrderID) from Orders
 
+
+--stogu 15 den kucuk olan 
+select COUNT (ProductName) from Products where UnitsInStock < 15
+
+
+--suana kadar toplam kac dolarlık ciromuz var ?
+select SUM(Quantity * UnitPrice * (1-Discount)) as 'ciro' from [Order Details] 
+
+
+--her üründe ortalama kac dolarlık  satıs yapılıyor (avg)
+select AVG(Quantity * UnitPrice * (1-Discount)) as 'ciro' from [Order Details] 
+
+
+--ülke basına ortalama ne kadar kargo ücreti odenmistir
+select Sum(freight) / COUNT(distinct ShipCountry) from Orders
+
+
+--en fazla kac dolarlık satıs yapıldı(max)
+select max (Quantity * UnitPrice *(1-Discount)) from [Order Details]
+
+
+--en düsük satıs kac dolarlık (min)
+select min (Quantity * UnitPrice *(1-Discount)) from [Order Details]
+
+
+--5 denn buyuk en dusuk kac dolarlık satıs yapıldı
+select min (Quantity * UnitPrice *(1-Discount)) from [Order Details] where  (Quantity * UnitPrice *(1-Discount)) > 5
+
+
+--yukardaki min in denemesini yapmaya calıstım şimdilik olmadı :D
+select min (Quantity), min (Quantity * UnitPrice *(1-Discount))  as 'result'  from [Order Details]
+
+
+
+--bir yada iki nolu kargo firmasi ile tasınmıs 1996 yılında bir persembe günü alınmıs siparisler icin odenen maksimum kargo bedeli nedir
+
+select * from [Order Details]
+
+select max(Freight) from Orders
+where ShipVia in (1,2) and YEAR(OrderDate) = 1996 and DATENAME(WEEKDAY, OrderDate) = 'Thursday'
 
